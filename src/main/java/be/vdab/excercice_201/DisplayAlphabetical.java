@@ -2,7 +2,10 @@ package be.vdab.excercice_201;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
 public class DisplayAlphabetical {
     public static void main(String[] args) throws Exception {
@@ -30,15 +33,16 @@ public class DisplayAlphabetical {
         list.forEach(System.out::println); // Dit is een lambda-expression. Daar leer je volgende week meer over.
 
     }
+
     public static class MyComparator implements Comparator<String> {
         @Override
-        public int compare(String s1, String s2){
+        public int compare(String s1, String s2) {
             // return s1.length() - s2.length();
             // Je vergelijkt ze eigenlijk met hun lengte, niet alfabetisch.
             // De String klasse heeft een methode compareTo en CompareToIgnoreCase, kijk eens wat je hiermee kan?
             // https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#compareToIgnoreCase(java.lang.String)
 
-            return ...
+            return s1.compareToIgnoreCase(s2);
 
         }
     }
