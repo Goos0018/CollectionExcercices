@@ -1,33 +1,24 @@
 package be.vdab.excercice_201;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class DisplayAlphabetical {
-    public static void main(String[] args) throws Exception {
-        List<String> list = new ArrayList<>();
+    public static void main(String[] args) {
 
-        Scanner sc2 = null;
-        try {
-            sc2 = new Scanner(new File("input.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        while (sc2.hasNextLine()) {
-            Scanner s2 = new Scanner(sc2.nextLine());
-            while (s2.hasNext()) {
-                String s = s2.next();
-                list.add(s);
+        try (BufferedReader input = new BufferedReader(new FileReader("input.txt"))) {
+
+            String read = null;
+            while ((read = input.readLine()) != null) {
+                String[] splited = read.split("\\s+");
+                for (String part : splited) {
+                    System.out.println(part);
+                }
             }
-        }
-        Arrays.sort(list, new MyComparator());
-
-    }
-    public static class MyComparator implements Comparator<String> {
-        @Override
-        public int compare(String s1, String s2){
-            return s1.length() - s2.length();
+        } catch (IOException e) {
+            System.out.println("There was a problem: " + e);
+            e.printStackTrace();
         }
     }
 }
