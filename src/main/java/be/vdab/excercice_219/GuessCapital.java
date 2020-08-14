@@ -70,9 +70,18 @@ public class GuessCapital {
             for (int j = 0; j < stateCapitals.length; j++) {
                 stateCapitalsMap.put(stateCapitals[i], stateCapitals[j]);
             }
+
+        Elias:
+        stateCapitals[i] en bv i=1 zal stateCaps zijn eerste element teruggeven which is {Alabama, Montgomery} which is nog steeds een array!
+        De map verwacht een string paar, maar krijgt voor key en value telkens een String array, lees de tooltip en kijk wat er onder expected en actual staat.
+        Om aan het eerste en tweede element van die alabama array te geraken kan je bijvoorbeeld werken met de stateCapitals[...][...] notatie.
         */
 
         Map<String, String> stateCapitalsMap = new HashMap<>();
+        // In deze foreach zie je links van de dubbele punten dat each element dat wordt overlopen door de loop zelf ook een array is.
+        // Ze noemen die stateCapital enkelvoud en vragen daar het nulste en eerste element van op.
+        // Oplossingen op het internet vinden is niet altijd fout, zolang je snapt hoe en waarom.
+        // In dit stadium is zelf een implementatie schrijven uiteraard leerrijker, maar opzoeken mag altijd.
         for (String[] stateCapital : stateCapitals) {
             stateCapitalsMap.put(stateCapital[0], stateCapital[1]);
         }
